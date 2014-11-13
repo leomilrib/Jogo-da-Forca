@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'game'
 
-describe Game do 
+describe Game do
   describe "#start" do
     it "print the initial message" do
       output = double("output")
@@ -14,5 +14,5 @@ describe Game do
 
       game.start
     end
-  end  
+  end
 end
