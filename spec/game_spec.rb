@@ -9,7 +9,7 @@ describe Game do
       output = double("output")
       game = Game.new(output)
 
-      initial_message = "Bem vindo ao jogo da forca"
+      initial_message = "Bem-vindo ao jogo da forca!"
       expect(output).to receive(:puts).with(initial_message)
 
       game.start
