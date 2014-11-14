@@ -4,7 +4,7 @@ Quando /^começo um novo jogo$/ do
   start_new_game
 end
 
-Então /^o jogo termina com a seguinte mensagem na tela$/ do |text|
+Então /^o jogo termina com a seguinte mensagem na tela:$/ do |text|
   assert_passing_with(text)
 end
 
