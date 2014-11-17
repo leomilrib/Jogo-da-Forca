@@ -1,8 +1,9 @@
-require_relative 'cli_ui'
 # encoding: UTF-8
 
+require_relative 'cli_ui'
+
 class Game
-  def initialize(ui = CliUi.new)
+  def initialize(ui = Cli_Ui.new)
     @ui = ui
     @ended = false
   end
@@ -18,6 +19,13 @@ class Game
 
   def next_step
     @ui.write("Qual o tamanho da palavra a ser sorteada?")
+
+    player_input = @ui.read.strip
+
+    if player_input == "fim"
+      @ended = true
+    end
+
     word_length = @ui.read
   end
 end
