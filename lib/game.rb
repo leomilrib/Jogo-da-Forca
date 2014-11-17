@@ -1,3 +1,4 @@
+require_relative 'cli_ui'
 # encoding: UTF-8
 
 class Game

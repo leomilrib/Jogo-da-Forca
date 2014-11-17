@@ -11,7 +11,7 @@ describe Game do
   describe "#start" do
     it "print the initial message" do
       initial_message = "Bem-vindo ao jogo da forca!"
-      expect(output).to receive(:write).with(initial_message)
+      expect(ui).to receive(:write).with(initial_message)
 
       game.start
     end
