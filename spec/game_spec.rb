@@ -4,14 +4,14 @@ require 'spec_helper'
 require 'game'
 
 describe Game do
-  let(:ui) { double("ui") }
+  let(:ui) { double("ui").as_null_object }
   
   subject(:game) { Game.new(ui) }
 
   describe "#start" do
     it "print the initial message" do
       initial_message = "Bem-vindo ao jogo da forca!"
-      expect(output).to receive(:write).with(initial_message)
+      expect(ui).to receive(:write).with(initial_message)
 
       game.start
     end
@@ -30,6 +30,35 @@ describe Game do
         expect(ui).to receive(:write).with(question)
         
         expect(ui).to receive(:read)
+
+        game.next_step
+      end
+
+      it "finishes the game when the player asks to" do
+        player_input = "fim"
+        allow(ui).to receive(:read).and_return(player_input)
+
+        game.next_step
+
+        expect(game).to be_ended
+      end
+    end
+   
+    context "when the player asks to raffle a word" do
+      it "raffles a word with the given length" do
+        word_length = "3"
+        allow(ui).to receive(:read).and_return(word_length)
+
+        game.next_step
+
+        expect(game.raffled_word).to have(word_length).letters
+      end
+
+      it "print a '_' for each letter in the raffled word" do
+        word_length = "3"
+        allow(ui).to receive(:read).and_return(word_length)
+
+        expect(ui).to receive(:write).with("_ _ _")
 
         game.next_step
       end
