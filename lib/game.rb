@@ -28,9 +28,7 @@ class Game
     else
       raffle_word(player_input.to_i)
       print_letters_feedback
-
     end
-    word_length = @ui.read
   end
 
   private

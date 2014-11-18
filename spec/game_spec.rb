@@ -5,7 +5,7 @@ require 'game'
 
 describe Game do
   let(:ui) { double("ui").as_null_object }
-  
+
   subject(:game) { Game.new(ui) }
 
   describe "#start" do
@@ -28,7 +28,7 @@ describe Game do
       it "asks the player for the length of the word to be raffled" do
         question = "Qual o tamanho da palavra a ser sorteada?"
         expect(ui).to receive(:write).with(question)
-        
+
         expect(ui).to receive(:read)
 
         game.next_step
@@ -43,7 +43,7 @@ describe Game do
         expect(game).to be_ended
       end
     end
-   
+
     context "when the player asks to raffle a word" do
       it "raffles a word with the given length" do
         word_length = "3"
